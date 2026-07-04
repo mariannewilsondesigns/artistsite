@@ -20,19 +20,38 @@
   /* ---------- SPLASH entry ---------- */
   var splash = document.querySelector(".splash");
   if(splash){
+    var entered = false;
+    function enterSite(){
+      if(entered) return;
+      entered = true;
+      var href = (splash.querySelector("[data-enter]") || {}).getAttribute("href") || "works.html";
+      splash.style.transition = "opacity .5s ease";
+      splash.style.opacity = "0";
+      setTimeout(function(){ window.location.href = href; }, 420);
+    }
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){ splash.classList.add("is-ready"); });
     });
-    var enterBtn = splash.querySelector("[data-enter]");
-    if(enterBtn){
-      enterBtn.addEventListener("click", function(e){
+    splash.querySelectorAll("[data-enter]").forEach(function(el){
+      el.addEventListener("click", function(e){
         e.preventDefault();
-        var href = enterBtn.getAttribute("href") || "works.html";
-        splash.style.transition = "opacity .5s ease";
-        splash.style.opacity = "0";
-        setTimeout(function(){ window.location.href = href; }, 420);
+        enterSite();
       });
-    }
+    });
+    /* scroll gesture — wheel down or finger-swipe down triggers entry */
+    splash.addEventListener("wheel", function(e){
+      if(e.deltaY > 0){ enterSite(); }
+    }, {passive:true});
+    var touchStartY = null;
+    splash.addEventListener("touchstart", function(e){
+      touchStartY = e.changedTouches[0].clientY;
+    }, {passive:true});
+    splash.addEventListener("touchend", function(e){
+      if(touchStartY === null) return;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if(dy < -30){ enterSite(); } /* swipe up */
+      touchStartY = null;
+    }, {passive:true});
   }
 
   /* ---------- CAROUSEL ---------- */

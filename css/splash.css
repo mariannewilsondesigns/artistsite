@@ -52,29 +52,15 @@
   transform:translateY(0);
 }
 
-.splash__eyebrow{
-  font-size:0.74rem;
-  font-weight:600;
-  letter-spacing:0.22em;
-  text-transform:uppercase;
-  color:var(--chartreuse);
-  margin-bottom:22px;
-}
-
-.splash__name{
-  font-family:var(--font-display);
-  font-style:italic;
-  font-weight:200;
-  font-size:clamp(3rem,10vw,7.4rem);
-  line-height:0.98;
+.splash__title{
+  font-family:"Instrument Serif",serif;
+  font-style:normal;
+  font-weight:400;
+  font-size:clamp(1.8rem,5vw,3.2rem);
+  line-height:1.1;
   margin:0;
-}
-
-.splash__tagline{
-  margin-top:20px;
-  font-size:clamp(1rem,2vw,1.25rem);
-  color:rgba(250,248,241,0.82);
-  font-weight:300;
+  color:var(--chartreuse);
+  max-width:14ch;
 }
 
 .splash__enter{
@@ -95,11 +81,15 @@
   font-size:0.68rem;
   letter-spacing:0.18em;
   text-transform:uppercase;
+  text-decoration:none;
   opacity:0;
-  transition:opacity 1s var(--ease) .9s;
+  cursor:pointer;
+  transition:opacity 1s var(--ease) .9s, color .25s var(--ease);
 }
 
 .splash.is-ready .splash__scroll{opacity:1;}
+
+.splash__scroll:hover{color:var(--chartreuse);}
 
 .splash__scroll-line{
   width:1px;
@@ -114,6 +104,9 @@
 }
 
 @media (prefers-reduced-motion:reduce){
-  .splash__img,.splash__content,.splash__scroll{transition:none;}
   .splash__scroll-line{animation:none;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .splash__img,.splash__content,.splash__scroll{transition:none;}
 }

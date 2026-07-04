@@ -10,7 +10,7 @@
 <meta property="og:image" content="images/site/hero.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/works.css">
 </head>
@@ -21,33 +21,36 @@
 <header class="works-hero">
   <img class="works-hero__img" src="images/site/hero.jpg" alt="">
   <div class="works-hero__inner">
-    <p class="eyebrow eyebrow--on-dark">Exhibition Catalogue</p>
-    <h1>The Works</h1>
-    <p class="works-hero__meta">Every piece in the show, in order — each with its own page so a gallery QR code can point straight to it.</p>
+    <p class="eyebrow eyebrow--on-dark">Studio8 Gallery, Gold Coast</p>
+    <h1>The Exhibition</h1>
+    <p class="works-hero__meta">Life in Colour — fifteen works organised by medium, featuring Marianne Wilson's paintings in acrylic, oil and watercolour.</p>
+    <p class="works-hero__meta">Opening soon at Studio8 Gallery, 8 Duringan Street, Currumbin. <a href="https://studio8gallery.com.au" target="_blank" rel="noopener" style="color:var(--chartreuse);text-decoration:underline;">studio8gallery.com.au</a></p>
   </div>
 </header>
 
 <main class="works-main">
-  <div class="works-toolbar">
-    <span class="works-count">{{ works|length }} works</span>
-    <span class="works-count">Plates 01–{{ '%02d'|format(works|length) }}</span>
+  {% for group_name, group_works in medium_groups %}
+  <div class="works-section">
+    <div class="works-section__head">
+      <span class="works-section__label">{{ group_name }}</span>
+    </div>
+    <section class="works-grid">
+      {% for w in group_works %}
+      <a class="work-card" href="works/{{ w.slug }}.html">
+        <div class="work-card__frame">
+          <span class="work-card__plate">{{ group_name }}</span>
+          <span class="work-card__status">{{ w.status }}</span>
+          <img src="{{ w.images[0] }}" alt="{{ w.title }}, {{ w.medium }}" loading="lazy">
+        </div>
+        <div class="work-card__meta">
+          <h3 class="work-card__title">{{ w.title }}</h3>
+          <p class="work-card__sub"><span>{{ w.medium }}</span><span>{{ w.dimensions }}</span></p>
+        </div>
+      </a>
+      {% endfor %}
+    </section>
   </div>
-
-  <section class="works-grid">
-    {% for w in works %}
-    <a class="work-card" href="works/{{ w.slug }}.html">
-      <div class="work-card__frame">
-        <span class="work-card__plate">Plate {{ w.plate }}</span>
-        <span class="work-card__status">{{ w.status }}</span>
-        <img src="{{ w.images[0] }}" alt="{{ w.title }}, {{ w.medium }}" loading="lazy">
-      </div>
-      <div class="work-card__meta">
-        <h3 class="work-card__title">{{ w.title }}</h3>
-        <p class="work-card__sub"><span>{{ w.medium }}</span><span>{{ w.dimensions }}</span></p>
-      </div>
-    </a>
-    {% endfor %}
-  </section>
+  {% endfor %}
 </main>
 
 {% include "_footer.html" %}

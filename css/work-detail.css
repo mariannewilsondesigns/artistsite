@@ -118,13 +118,13 @@
 /* ---------------------------------------------------------
    INFO PANEL
    --------------------------------------------------------- */
-.work-info__plate{
-  display:inline-block;
-  margin-bottom:18px;
-}
-
-.work-info h1{
-  margin-bottom:6px;
+.work-info__title{
+  font-family:"Instrument Serif",serif;
+  font-style:normal;
+  font-weight:400;
+  font-size:clamp(1.5rem,2.6vw,2.2rem);
+  line-height:1.2;
+  margin-bottom:8px;
 }
 
 .work-info__medium{
