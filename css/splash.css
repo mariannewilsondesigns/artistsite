@@ -1,0 +1,119 @@
+.splash{
+  position:relative;
+  height:100svh;
+  min-height:560px;
+  overflow:hidden;
+  background:var(--plum);
+}
+
+.splash__img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0.001;
+  transform:scale(1.06);
+  transition:opacity 1.4s var(--ease),transform 3.2s var(--ease);
+}
+
+.splash.is-ready .splash__img{
+  opacity:0.55;
+  transform:scale(1);
+}
+
+.splash::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(36,24,49,0.35) 0%, rgba(36,24,49,0.55) 55%, rgba(36,24,49,0.92) 100%);
+  z-index:1;
+}
+
+.splash__content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 6vw;
+  color:var(--paper);
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity 1s var(--ease) .3s, transform 1s var(--ease) .3s;
+}
+
+.splash.is-ready .splash__content{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.splash__eyebrow{
+  font-size:0.74rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--chartreuse);
+  margin-bottom:22px;
+}
+
+.splash__name{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:200;
+  font-size:clamp(3rem,10vw,7.4rem);
+  line-height:0.98;
+  margin:0;
+}
+
+.splash__tagline{
+  margin-top:20px;
+  font-size:clamp(1rem,2vw,1.25rem);
+  color:rgba(250,248,241,0.82);
+  font-weight:300;
+}
+
+.splash__enter{
+  margin-top:44px;
+}
+
+.splash__scroll{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  color:rgba(250,248,241,0.7);
+  font-size:0.68rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  opacity:0;
+  transition:opacity 1s var(--ease) .9s;
+}
+
+.splash.is-ready .splash__scroll{opacity:1;}
+
+.splash__scroll-line{
+  width:1px;
+  height:34px;
+  background:linear-gradient(180deg, var(--chartreuse), transparent);
+  animation:scrollpulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollpulse{
+  0%,100%{transform:scaleY(0.6);opacity:0.5;}
+  50%{transform:scaleY(1);opacity:1;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .splash__img,.splash__content,.splash__scroll{transition:none;}
+  .splash__scroll-line{animation:none;}
+}

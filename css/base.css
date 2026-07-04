@@ -1,0 +1,281 @@
+/* ============================================================
+   MARIANNE WILSON — DESIGN SYSTEM
+   Palette: warm paper ground, aubergine depth, chartreuse spark.
+   Display: PP Editorial Ultralight Italic. Body: Inter.
+   ============================================================ */
+
+@font-face{
+  font-family:"PP Editorial";
+  src:url("../fonts/PPEditorialNew-UltralightItalic.otf") format("otf"),
+      url("../fonts/PPEditorialNew-UltralightItalic.otf") format("otf");
+  font-style:italic;
+  font-display:swap;
+}
+
+:root{
+  /* --- colour --- */
+  --paper:#FAF8F1;
+  --paper-dim:#F1EEE3;
+  --ink:#1D1B16;
+  --ink-soft:#4A473E;
+  --plum:#241831;
+  --plum-light:#3B2A49;
+  --chartreuse:#DFFF57;
+  --chartreuse-deep:#647000;
+  --stone:#E4DFD1;
+  --line:#D8D2BF;
+  --white:#FFFFFF;
+
+  /* --- type --- */
+  --font-display:"PP Editorial","Iowan Old Style","Georgia",serif;
+  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  /* --- scale --- */
+  --nav-h:76px;
+  --edge:6vw;
+  --radius:2px;
+
+  /* --- motion --- */
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth;}
+}
+
+*{box-sizing:border-box;}
+
+html,body{margin:0;padding:0;}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-body);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+img{display:block;max-width:100%;}
+
+a{color:inherit;}
+
+::selection{background:var(--chartreuse);color:var(--ink);}
+
+:focus-visible{
+  outline:2px solid var(--chartreuse-deep);
+  outline-offset:3px;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:100;
+  font-style:italic;
+  margin:0;
+  letter-spacing:0.002em;
+  color:var(--ink);
+}
+
+h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:1.02;}
+h2{font-size:clamp(1.9rem,4.4vw,3.1rem);line-height:1.08;}
+h3{font-size:clamp(1.3rem,2.6vw,1.9rem);line-height:1.15;}
+
+p{margin:0 0 1.1em;}
+p:last-child{margin-bottom:0;}
+
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--chartreuse-deep);
+}
+
+.eyebrow--on-dark{color:var(--chartreuse);}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ---------------------------------------------------------
+   NAV
+   --------------------------------------------------------- */
+.site-nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:var(--nav-h);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 var(--edge);
+  z-index:100;
+  background:rgba(250,248,241,0.86);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease),background .3s var(--ease);
+}
+
+.site-nav.is-scrolled{
+  border-bottom-color:var(--line);
+}
+
+.site-nav__mark{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:200;
+  font-size:1.35rem;
+  text-decoration:none;
+  color:var(--ink);
+  white-space:nowrap;
+}
+
+.site-nav__links{
+  display:flex;
+  align-items:center;
+  gap:clamp(20px,3vw,44px);
+  list-style:none;
+  margin:0;padding:0;
+}
+
+.site-nav__links a{
+  text-decoration:none;
+  font-size:0.86rem;
+  font-weight:500;
+  letter-spacing:0.03em;
+  color:var(--ink);
+  position:relative;
+  padding-bottom:4px;
+}
+
+.site-nav__links a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:0;
+  width:0%;
+  height:2px;
+  background:var(--chartreuse-deep);
+  transition:width .28s var(--ease);
+}
+
+.site-nav__links a:hover::after,
+.site-nav__links a.is-active::after{
+  width:100%;
+}
+
+.site-nav__links a.is-active{color:var(--ink);font-weight:600;}
+
+/* ---------------------------------------------------------
+   FOOTER
+   --------------------------------------------------------- */
+.site-footer{
+  background:var(--plum);
+  color:var(--paper);
+  padding:64px var(--edge) 34px;
+}
+
+.site-footer__top{
+  display:flex;
+  flex-wrap:wrap;
+  gap:32px;
+  justify-content:space-between;
+  align-items:flex-end;
+  padding-bottom:36px;
+  border-bottom:1px solid rgba(250,248,241,0.16);
+}
+
+.site-footer__mark{
+  font-family:var(--font-display);
+  font-style:italic;
+  font-weight:200;
+  font-size:clamp(2rem,5vw,3.2rem);
+  color:var(--paper);
+}
+
+.site-footer__links{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  list-style:none;
+  margin:0;padding:0;
+}
+
+.site-footer__links a{
+  text-decoration:none;
+  color:var(--paper);
+  font-size:0.86rem;
+  font-weight:500;
+  border-bottom:1px solid rgba(250,248,241,0.35);
+  padding-bottom:2px;
+  transition:border-color .2s var(--ease),color .2s var(--ease);
+}
+
+.site-footer__links a:hover{
+  color:var(--chartreuse);
+  border-color:var(--chartreuse);
+}
+
+.site-footer__bottom{
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:10px;
+  padding-top:22px;
+  font-size:0.76rem;
+  letter-spacing:0.02em;
+  color:rgba(250,248,241,0.55);
+}
+
+/* ---------------------------------------------------------
+   BUTTONS
+   --------------------------------------------------------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:999px;
+  border:1px solid var(--ink);
+  background:transparent;
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:0.85rem;
+  font-weight:600;
+  letter-spacing:0.02em;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease),border-color .25s var(--ease);
+}
+
+.btn:hover{
+  background:var(--ink);
+  color:var(--paper);
+  transform:translateY(-1px);
+}
+
+.btn--primary{
+  background:var(--chartreuse);
+  border-color:var(--chartreuse);
+  color:var(--ink);
+}
+
+.btn--primary:hover{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:var(--chartreuse);
+}
+
+.btn--on-dark{
+  border-color:rgba(250,248,241,0.5);
+  color:var(--paper);
+}
+
+.btn--on-dark:hover{
+  background:var(--chartreuse);
+  border-color:var(--chartreuse);
+  color:var(--ink);
+}
+
+.btn svg{width:16px;height:16px;flex:none;}
