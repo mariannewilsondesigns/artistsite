@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Works | Marianne Wilson</title>
+<meta name="description" content="Browse the full exhibition catalogue — {{ works|length }} works by Marianne Wilson, spanning watercolour, acrylic and oil.">
+<meta property="og:title" content="Works | Marianne Wilson">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/site/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/works.css">
+</head>
+<body>
+
+{% include "_nav.html" %}
+
+<header class="works-hero">
+  <img class="works-hero__img" src="images/site/hero.jpg" alt="">
+  <div class="works-hero__inner">
+    <p class="eyebrow eyebrow--on-dark">Exhibition Catalogue</p>
+    <h1>The Works</h1>
+    <p class="works-hero__meta">Every piece in the show, in order — each with its own page so a gallery QR code can point straight to it.</p>
+  </div>
+</header>
+
+<main class="works-main">
+  <div class="works-toolbar">
+    <span class="works-count">{{ works|length }} works</span>
+    <span class="works-count">Plates 01–{{ '%02d'|format(works|length) }}</span>
+  </div>
+
+  <section class="works-grid">
+    {% for w in works %}
+    <a class="work-card" href="works/{{ w.slug }}.html">
+      <div class="work-card__frame">
+        <span class="work-card__plate">Plate {{ w.plate }}</span>
+        <span class="work-card__status">{{ w.status }}</span>
+        <img src="{{ w.images[0] }}" alt="{{ w.title }}, {{ w.medium }}" loading="lazy">
+      </div>
+      <div class="work-card__meta">
+        <h3 class="work-card__title">{{ w.title }}</h3>
+        <p class="work-card__sub"><span>{{ w.medium }}</span><span>{{ w.dimensions }}</span></p>
+      </div>
+    </a>
+    {% endfor %}
+  </section>
+</main>
+
+{% include "_footer.html" %}
+
+<script src="js/app.js"></script>
+</body>
+</html>

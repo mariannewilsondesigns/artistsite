@@ -1,0 +1,265 @@
+{
+  "artist": {
+    "name": "Marianne Wilson",
+    "tagline": "Life in Colour",
+    "instagram": "https://www.instagram.com/mariannewilsondesigns/",
+    "email": "mewilsondesigner@gmail.com"
+  },
+  "works": [
+    {
+      "id": 1,
+      "placeholder": false,
+      "title": "Rain on my Window",
+      "medium": "Mixed Media on Linen",
+      "dimensions": "50 \u00d7 90 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Layered washes and fine linework trace the blur of water on glass, a quiet study in interruption and colour bleeding through.",
+      "slug": "rain-on-my-window",
+      "plate": "01",
+      "images": [
+        "images/works/rain-on-my-window/01.jpg",
+        "images/works/rain-on-my-window/02.jpg",
+        "images/works/rain-on-my-window/03.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "placeholder": false,
+      "title": "Blue Horizon",
+      "medium": "Acrylic on Canvas",
+      "dimensions": "60 \u00d7 80 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Bands of ultramarine and cerulean sit low against an open field of colour, a horizon held in place by nothing but pigment.",
+      "slug": "blue-horizon",
+      "plate": "02",
+      "images": [
+        "images/works/blue-horizon/01.jpg",
+        "images/works/blue-horizon/02.jpg",
+        "images/works/blue-horizon/03.jpg"
+      ]
+    },
+    {
+      "id": 3,
+      "placeholder": true,
+      "title": "Porcelain Study No. 1",
+      "medium": "Oil on Board",
+      "dimensions": "40 \u00d7 40 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "porcelain-study-no-1",
+      "plate": "03",
+      "images": [
+        "images/works/porcelain-study-no-1/01.jpg",
+        "images/works/porcelain-study-no-1/02.jpg",
+        "images/works/porcelain-study-no-1/03.jpg"
+      ]
+    },
+    {
+      "id": 4,
+      "placeholder": true,
+      "title": "Garden Room",
+      "medium": "Watercolour on Paper",
+      "dimensions": "35 \u00d7 50 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "garden-room",
+      "plate": "04",
+      "images": [
+        "images/works/garden-room/01.jpg",
+        "images/works/garden-room/02.jpg",
+        "images/works/garden-room/03.jpg"
+      ]
+    },
+    {
+      "id": 5,
+      "placeholder": true,
+      "title": "Peonies, Late Light",
+      "medium": "Oil on Canvas",
+      "dimensions": "60 \u00d7 60 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "peonies-late-light",
+      "plate": "05",
+      "images": [
+        "images/works/peonies-late-light/01.jpg",
+        "images/works/peonies-late-light/02.jpg",
+        "images/works/peonies-late-light/03.jpg"
+      ]
+    },
+    {
+      "id": 6,
+      "placeholder": true,
+      "title": "Interior with Yellow Chair",
+      "medium": "Acrylic on Canvas",
+      "dimensions": "70 \u00d7 90 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "interior-with-yellow-chair",
+      "plate": "06",
+      "images": [
+        "images/works/interior-with-yellow-chair/01.jpg",
+        "images/works/interior-with-yellow-chair/02.jpg",
+        "images/works/interior-with-yellow-chair/03.jpg"
+      ]
+    },
+    {
+      "id": 7,
+      "placeholder": true,
+      "title": "Still Life with Porcelain",
+      "medium": "Oil on Linen",
+      "dimensions": "45 \u00d7 55 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "still-life-with-porcelain",
+      "plate": "07",
+      "images": [
+        "images/works/still-life-with-porcelain/01.jpg",
+        "images/works/still-life-with-porcelain/02.jpg",
+        "images/works/still-life-with-porcelain/03.jpg"
+      ]
+    },
+    {
+      "id": 8,
+      "placeholder": true,
+      "title": "Brisbane Garden, Morning",
+      "medium": "Watercolour on Paper",
+      "dimensions": "30 \u00d7 40 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "brisbane-garden-morning",
+      "plate": "08",
+      "images": [
+        "images/works/brisbane-garden-morning/01.jpg",
+        "images/works/brisbane-garden-morning/02.jpg",
+        "images/works/brisbane-garden-morning/03.jpg"
+      ]
+    },
+    {
+      "id": 9,
+      "placeholder": true,
+      "title": "Dahlias in Blue Vase",
+      "medium": "Acrylic on Canvas",
+      "dimensions": "50 \u00d7 70 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "dahlias-in-blue-vase",
+      "plate": "09",
+      "images": [
+        "images/works/dahlias-in-blue-vase/01.jpg",
+        "images/works/dahlias-in-blue-vase/02.jpg",
+        "images/works/dahlias-in-blue-vase/03.jpg"
+      ]
+    },
+    {
+      "id": 10,
+      "placeholder": true,
+      "title": "Classic Interior, No. 2",
+      "medium": "Oil on Board",
+      "dimensions": "55 \u00d7 65 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "classic-interior-no-2",
+      "plate": "10",
+      "images": [
+        "images/works/classic-interior-no-2/01.jpg",
+        "images/works/classic-interior-no-2/02.jpg",
+        "images/works/classic-interior-no-2/03.jpg"
+      ]
+    },
+    {
+      "id": 11,
+      "placeholder": true,
+      "title": "Textile Memory",
+      "medium": "Mixed Media on Linen",
+      "dimensions": "40 \u00d7 60 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "textile-memory",
+      "plate": "11",
+      "images": [
+        "images/works/textile-memory/01.jpg",
+        "images/works/textile-memory/02.jpg",
+        "images/works/textile-memory/03.jpg"
+      ]
+    },
+    {
+      "id": 12,
+      "placeholder": true,
+      "title": "Camellia and Porcelain",
+      "medium": "Oil on Canvas",
+      "dimensions": "50 \u00d7 50 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "camellia-and-porcelain",
+      "plate": "12",
+      "images": [
+        "images/works/camellia-and-porcelain/01.jpg",
+        "images/works/camellia-and-porcelain/02.jpg",
+        "images/works/camellia-and-porcelain/03.jpg"
+      ]
+    },
+    {
+      "id": 13,
+      "placeholder": true,
+      "title": "Cape Light",
+      "medium": "Watercolour on Paper",
+      "dimensions": "35 \u00d7 45 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "cape-light",
+      "plate": "13",
+      "images": [
+        "images/works/cape-light/01.jpg",
+        "images/works/cape-light/02.jpg",
+        "images/works/cape-light/03.jpg"
+      ]
+    },
+    {
+      "id": 14,
+      "placeholder": true,
+      "title": "Everyday Beauty, No. 3",
+      "medium": "Acrylic on Canvas",
+      "dimensions": "60 \u00d7 60 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "everyday-beauty-no-3",
+      "plate": "14",
+      "images": [
+        "images/works/everyday-beauty-no-3/01.jpg",
+        "images/works/everyday-beauty-no-3/02.jpg",
+        "images/works/everyday-beauty-no-3/03.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "placeholder": true,
+      "title": "Late Summer, Garden Table",
+      "medium": "Oil on Linen",
+      "dimensions": "65 \u00d7 85 cm",
+      "year": "2025",
+      "status": "Available",
+      "description": "Replace with real title, medium, dimensions and description before printing QR codes \u2014 this entry is a placeholder.",
+      "slug": "late-summer-garden-table",
+      "plate": "15",
+      "images": [
+        "images/works/late-summer-garden-table/01.jpg",
+        "images/works/late-summer-garden-table/02.jpg",
+        "images/works/late-summer-garden-table/03.jpg"
+      ]
+    }
+  ]
+}
