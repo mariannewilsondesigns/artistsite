@@ -39,13 +39,15 @@
       {% for w in group_works %}
       <a class="work-card" href="works/{{ w.slug }}.html">
         <div class="work-card__frame">
-          <span class="work-card__plate">{{ group_name }}</span>
-          <span class="work-card__status">{{ w.status }}</span>
           <img src="{{ w.images[0] }}" alt="{{ w.title }}, {{ w.medium }}" loading="lazy">
         </div>
         <div class="work-card__meta">
           <h3 class="work-card__title">{{ w.title }}</h3>
-          <p class="work-card__sub"><span>{{ w.medium }}</span><span>{{ w.dimensions }}</span></p>
+          <span class="work-card__tag">{{ group_name }}</span>
+          <p class="work-card__sub">
+            <span>{{ w.dimensions }}</span>
+            <span class="work-card__status">{{ w.status }}</span>
+          </p>
         </div>
       </a>
       {% endfor %}
