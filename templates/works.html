@@ -64,6 +64,7 @@
         </div>
         <p class="work-card__sub">
           <span>{{ w.dimensions }}</span>
+          {% if w.price %}<span class="work-card__price">${{ "{:,.0f}".format(w.price) }}</span>{% endif %}
         </p>
       </div>
     </a>

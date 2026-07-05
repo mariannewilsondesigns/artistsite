@@ -128,6 +128,8 @@
     function getSubBtn(){ return mediumSub && mediumSub.querySelector(".is-active"); }
 
     function renderCards(sorted){
+      /* clear grid and re-add only the sorted/filtered cards */
+      while(worksGrid.firstChild){ worksGrid.removeChild(worksGrid.firstChild); }
       sorted.forEach(function(card){ worksGrid.appendChild(card); });
     }
 
