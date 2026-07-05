@@ -107,4 +107,43 @@
 
   document.querySelectorAll(".carousel").forEach(initCarousel);
 
+  /* ---------- WORKS SORT ---------- */
+  var sortGroup = document.querySelector("[data-sort-group]");
+  var worksGrid = document.querySelector("[data-works-grid]");
+  if(sortGroup && worksGrid){
+    var cards = Array.prototype.slice.call(worksGrid.children);
+    var defaultOrder = cards.map(function(c){ return c; });
+
+    var mediumOrder = { "Acrylic": 1, "Oil": 2, "Watercolour": 3 };
+
+    function sortWorks(mode){
+      var sorted;
+      if(mode === "default"){
+        sorted = defaultOrder.slice();
+      } else if(mode === "price"){
+        sorted = cards.slice().sort(function(a,b){
+          return (parseFloat(a.getAttribute("data-price")) || 0) - (parseFloat(b.getAttribute("data-price")) || 0);
+        });
+      } else if(mode === "medium"){
+        sorted = cards.slice().sort(function(a,b){
+          return (mediumOrder[a.getAttribute("data-medium")] || 0) - (mediumOrder[b.getAttribute("data-medium")] || 0)
+              || (a.getAttribute("data-medium") || "").localeCompare(b.getAttribute("data-medium") || "");
+        });
+      } else if(mode === "size"){
+        sorted = cards.slice().sort(function(a,b){
+          return (parseFloat(a.getAttribute("data-size")) || 0) - (parseFloat(b.getAttribute("data-size")) || 0);
+        });
+      }
+      sorted.forEach(function(card){ worksGrid.appendChild(card); });
+    }
+
+    sortGroup.querySelectorAll("[data-sort]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
+        btn.classList.add("is-active");
+        sortWorks(btn.getAttribute("data-sort"));
+      });
+    });
+  }
+
 })();
