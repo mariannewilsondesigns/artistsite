@@ -207,8 +207,14 @@
           mediumSub.querySelectorAll("[data-filter]").forEach(function(b){ b.classList.remove("is-active"); });
           subBtn.classList.add("is-active");
           activeFilter = subBtn.getAttribute("data-filter");
-          window.activeFilter = activeFilter;
           renderCards(cards.filter(function(c){ return c.getAttribute("data-medium") === activeFilter; }));
+          /* close the slide and reset arrow */
+          mediumSubWrap.classList.remove("is-open");
+          var medBtn = sortGroup.querySelector("[data-sort='medium']");
+          if(medBtn){
+            var arrow = medBtn.querySelector("[data-arrow]");
+            if(arrow) arrow.textContent = "→";
+          }
         });
       });
     }
