@@ -200,21 +200,15 @@
       });
     });
 
-    /* medium sub-option buttons */
+    /* medium sub-option buttons — stays open until explicitly closed */
     if(mediumSub){
       mediumSub.querySelectorAll("[data-filter]").forEach(function(subBtn){
-        subBtn.addEventListener("click", function(){
+        subBtn.addEventListener("click", function(e){
+          e.stopPropagation();
           mediumSub.querySelectorAll("[data-filter]").forEach(function(b){ b.classList.remove("is-active"); });
           subBtn.classList.add("is-active");
           activeFilter = subBtn.getAttribute("data-filter");
           renderCards(cards.filter(function(c){ return c.getAttribute("data-medium") === activeFilter; }));
-          /* close the slide and reset arrow */
-          mediumSubWrap.classList.remove("is-open");
-          var medBtn = sortGroup.querySelector("[data-sort='medium']");
-          if(medBtn){
-            var arrow = medBtn.querySelector("[data-arrow]");
-            if(arrow) arrow.textContent = "→";
-          }
         });
       });
     }
