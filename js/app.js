@@ -112,8 +112,8 @@
   var worksGrid = document.querySelector("[data-works-grid]");
   if(sortGroup && worksGrid){
     var cards = Array.prototype.slice.call(worksGrid.children);
-    var mediumSub = document.querySelector("[data-medium-sub]");
-    var mediumWrap = mediumSub && mediumSub.parentNode;
+    var mediumSubWrap = document.querySelector("[data-medium-sub]");
+    var mediumSub = mediumSubWrap && mediumSubWrap.querySelector(".works-sort__sub");
     var activeFilter = null;
 
     /* Default: alphabetical by title */
@@ -135,22 +135,21 @@
       var sorted;
       if(mode === "default"){
         sorted = alphabeticalOrder();
-        if(mediumSub) mediumSub.classList.remove("is-open");
-        if(mediumWrap) mediumWrap.querySelector("[data-sort]").classList.remove("is-active");
+        if(mediumSubWrap) mediumSubWrap.classList.remove("is-open");
         activeFilter = null;
       } else if(mode === "price"){
         sorted = cards.slice().sort(function(a,b){
           return (parseFloat(a.getAttribute("data-price")) || 0) - (parseFloat(b.getAttribute("data-price")) || 0);
         });
         if(dir === "desc") sorted.reverse();
-        if(mediumSub) mediumSub.classList.remove("is-open");
+        if(mediumSubWrap) mediumSubWrap.classList.remove("is-open");
         activeFilter = null;
       } else if(mode === "size"){
         sorted = cards.slice().sort(function(a,b){
           return (parseFloat(a.getAttribute("data-size")) || 0) - (parseFloat(b.getAttribute("data-size")) || 0);
         });
         if(dir === "desc") sorted.reverse();
-        if(mediumSub) mediumSub.classList.remove("is-open");
+        if(mediumSubWrap) mediumSubWrap.classList.remove("is-open");
         activeFilter = null;
       }
       /* apply medium filter if one is active */
@@ -167,9 +166,9 @@
       btn.addEventListener("click", function(e){
         var mode = btn.getAttribute("data-sort");
         if(mode === "medium"){
-          /* toggle the sub-options open/closed */
-          var isOpening = !mediumSub.classList.contains("is-open");
-          mediumSub.classList.toggle("is-open");
+          /* toggle the sub-options slide open/closed */
+          var isOpening = !mediumSubWrap.classList.contains("is-open");
+          mediumSubWrap.classList.toggle("is-open");
           if(isOpening){
             sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
             btn.classList.add("is-active");
@@ -188,7 +187,7 @@
           return;
         }
         /* close medium sub if open */
-        if(mediumSub) mediumSub.classList.remove("is-open");
+        if(mediumSubWrap) mediumSubWrap.classList.remove("is-open");
         activeFilter = null;
 
         sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
@@ -225,7 +224,7 @@
 
         sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
         btn.classList.add("is-active");
-        if(mediumSub) mediumSub.classList.remove("is-open");
+        if(mediumSubWrap) mediumSubWrap.classList.remove("is-open");
         activeFilter = null;
         sortWorks(mode, newDir);
       });
