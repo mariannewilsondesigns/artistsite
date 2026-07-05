@@ -112,38 +112,127 @@
   var worksGrid = document.querySelector("[data-works-grid]");
   if(sortGroup && worksGrid){
     var cards = Array.prototype.slice.call(worksGrid.children);
-    var defaultOrder = cards.map(function(c){ return c; });
+    var mediumSub = document.querySelector("[data-medium-sub]");
+    var mediumWrap = mediumSub && mediumSub.parentNode;
+    var activeFilter = null;
 
-    var mediumOrder = { "Acrylic": 1, "Oil": 2, "Watercolour": 3 };
+    /* Default: alphabetical by title */
+    function alphabeticalOrder(){
+      return cards.slice().sort(function(a,b){
+        return (a.getAttribute("data-title") || "").localeCompare(b.getAttribute("data-title") || "");
+      });
+    }
+    var defaultOrder = alphabeticalOrder();
 
-    function sortWorks(mode){
+    function getActiveBtn(){ return sortGroup.querySelector("[data-sort].is-active"); }
+    function getSubBtn(){ return mediumSub && mediumSub.querySelector(".is-active"); }
+
+    function renderCards(sorted){
+      sorted.forEach(function(card){ worksGrid.appendChild(card); });
+    }
+
+    function sortWorks(mode, dir){
       var sorted;
       if(mode === "default"){
-        sorted = defaultOrder.slice();
+        sorted = alphabeticalOrder();
+        if(mediumSub) mediumSub.classList.remove("is-open");
+        if(mediumWrap) mediumWrap.querySelector("[data-sort]").classList.remove("is-active");
+        activeFilter = null;
       } else if(mode === "price"){
         sorted = cards.slice().sort(function(a,b){
           return (parseFloat(a.getAttribute("data-price")) || 0) - (parseFloat(b.getAttribute("data-price")) || 0);
         });
-      } else if(mode === "medium"){
-        sorted = cards.slice().sort(function(a,b){
-          return (mediumOrder[a.getAttribute("data-medium")] || 0) - (mediumOrder[b.getAttribute("data-medium")] || 0)
-              || (a.getAttribute("data-medium") || "").localeCompare(b.getAttribute("data-medium") || "");
-        });
+        if(dir === "desc") sorted.reverse();
+        if(mediumSub) mediumSub.classList.remove("is-open");
+        activeFilter = null;
       } else if(mode === "size"){
         sorted = cards.slice().sort(function(a,b){
           return (parseFloat(a.getAttribute("data-size")) || 0) - (parseFloat(b.getAttribute("data-size")) || 0);
         });
+        if(dir === "desc") sorted.reverse();
+        if(mediumSub) mediumSub.classList.remove("is-open");
+        activeFilter = null;
       }
-      sorted.forEach(function(card){ worksGrid.appendChild(card); });
+      /* apply medium filter if one is active */
+      if(activeFilter){
+        sorted = sorted.filter(function(c){
+          return c.getAttribute("data-medium") === activeFilter;
+        });
+      }
+      renderCards(sorted);
     }
 
+    /* main sort buttons */
     sortGroup.querySelectorAll("[data-sort]").forEach(function(btn){
-      btn.addEventListener("click", function(){
+      btn.addEventListener("click", function(e){
+        var mode = btn.getAttribute("data-sort");
+        if(mode === "medium"){
+          /* toggle the sub-options open/closed */
+          var isOpening = !mediumSub.classList.contains("is-open");
+          mediumSub.classList.toggle("is-open");
+          if(isOpening){
+            sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
+            btn.classList.add("is-active");
+            /* render current filter or all */
+            var subActive = getSubBtn();
+            activeFilter = subActive ? subActive.getAttribute("data-filter") : null;
+            renderCards(activeFilter ? cards.filter(function(c){ return c.getAttribute("data-medium") === activeFilter; }) : cards.slice());
+          } else {
+            btn.classList.remove("is-active");
+            activeFilter = null;
+            /* revert to default */
+            sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
+            sortGroup.querySelector("[data-sort='default']").classList.add("is-active");
+            renderCards(alphabeticalOrder());
+          }
+          return;
+        }
+        /* close medium sub if open */
+        if(mediumSub) mediumSub.classList.remove("is-open");
+        activeFilter = null;
+
         sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
         btn.classList.add("is-active");
-        sortWorks(btn.getAttribute("data-sort"));
+
+        var dir = btn.getAttribute("data-dir") || "asc";
+        sortWorks(mode, dir);
       });
     });
+
+    /* medium sub-option buttons */
+    if(mediumSub){
+      mediumSub.querySelectorAll("[data-filter]").forEach(function(subBtn){
+        subBtn.addEventListener("click", function(){
+          mediumSub.querySelectorAll("[data-filter]").forEach(function(b){ b.classList.remove("is-active"); });
+          subBtn.classList.add("is-active");
+          activeFilter = subBtn.getAttribute("data-filter");
+          window.activeFilter = activeFilter;
+          renderCards(cards.filter(function(c){ return c.getAttribute("data-medium") === activeFilter; }));
+        });
+      });
+    }
+
+    /* toggle direction on price / size */
+    sortGroup.querySelectorAll("[data-dir]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var mode = btn.getAttribute("data-sort");
+        if(mode === "medium" || mode === "default") return;
+        var dir = btn.getAttribute("data-dir");
+        var newDir = dir === "asc" ? "desc" : "asc";
+        btn.setAttribute("data-dir", newDir);
+        var arrow = btn.querySelector("[data-arrow]");
+        if(arrow) arrow.textContent = newDir === "asc" ? "↑" : "↓";
+
+        sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
+        btn.classList.add("is-active");
+        if(mediumSub) mediumSub.classList.remove("is-open");
+        activeFilter = null;
+        sortWorks(mode, newDir);
+      });
+    });
+
+    /* set initial default */
+    renderCards(defaultOrder);
   }
 
 })();

@@ -39,9 +39,16 @@
     <span class="works-sort__label">Sort</span>
     <div class="works-sort__options" data-sort-group>
       <button class="works-sort__btn is-active" data-sort="default">Default</button>
-      <button class="works-sort__btn" data-sort="price">Price ↑</button>
-      <button class="works-sort__btn" data-sort="medium">Medium</button>
-      <button class="works-sort__btn" data-sort="size">Size ↑</button>
+      <button class="works-sort__btn" data-sort="price" data-dir="asc">Price <span data-arrow>↑</span></button>
+      <div class="works-sort__medium-wrap">
+        <button class="works-sort__btn" data-sort="medium">Medium <span data-arrow>▸</span></button>
+        <div class="works-sort__sub" data-medium-sub>
+          <button class="works-sort__sub-btn" data-filter="Acrylic">Acrylic</button>
+          <button class="works-sort__sub-btn" data-filter="Oil">Oil</button>
+          <button class="works-sort__sub-btn" data-filter="Watercolour">Watercolour</button>
+        </div>
+      </div>
+      <button class="works-sort__btn" data-sort="size" data-dir="asc">Size <span data-arrow>↑</span></button>
     </div>
   </div>
 
@@ -49,6 +56,7 @@
     
     
     <a class="work-card" href="works/alis-hippeastrums.html"
+       data-title="ali's hippeastrums"
        data-price="2600"
        data-medium="Acrylic"
        data-size="8374">
@@ -68,6 +76,7 @@
     
     
     <a class="work-card" href="works/alis-xanthostemon.html"
+       data-title="ali's xanthostamen"
        data-price="720"
        data-medium="Acrylic"
        data-size="1089">
@@ -87,6 +96,7 @@
     
     
     <a class="work-card" href="works/cabbage-patch.html"
+       data-title="cabbage patch"
        data-price="950"
        data-medium="Acrylic"
        data-size="1936">
@@ -106,6 +116,7 @@
     
     
     <a class="work-card" href="works/lillies-from-sue.html"
+       data-title="lillies from sue"
        data-price="720"
        data-medium="Acrylic"
        data-size="1419">
@@ -125,6 +136,7 @@
     
     
     <a class="work-card" href="works/narcissus-in-sunlight.html"
+       data-title="narcissus in sunlight"
        data-price="720"
        data-medium="Acrylic"
        data-size="1419">
@@ -144,6 +156,7 @@
     
     
     <a class="work-card" href="works/annas-nasturtiums.html"
+       data-title="anna's nasturtiums"
        data-price="720"
        data-medium="Oil"
        data-size="1419">
@@ -163,6 +176,7 @@
     
     
     <a class="work-card" href="works/floral-arrangement-on-kenzo-scarf.html"
+       data-title="floral arrangement on kenzo scarf"
        data-price="2600"
        data-medium="Oil"
        data-size="7420">
@@ -182,6 +196,7 @@
     
     
     <a class="work-card" href="works/flowers-from-the-garden.html"
+       data-title="flowers from the garden"
        data-price="1300"
        data-medium="Oil"
        data-size="2916">
@@ -201,6 +216,7 @@
     
     
     <a class="work-card" href="works/pennys-basque-figs.html"
+       data-title="penny's basque figs"
        data-price="1300"
        data-medium="Oil"
        data-size="2916">
@@ -220,6 +236,7 @@
     
     
     <a class="work-card" href="works/pony-clubs-nasturtiums.html"
+       data-title="pony club's nasturtiums"
        data-price="720"
        data-medium="Oil"
        data-size="1419">
@@ -239,6 +256,7 @@
     
     
     <a class="work-card" href="works/protea-from-ewan.html"
+       data-title="protea from ewan"
        data-price="720"
        data-medium="Oil"
        data-size="1419">
@@ -258,6 +276,7 @@
     
     
     <a class="work-card" href="works/cabbage-from-the-market.html"
+       data-title="cabbage from the market"
        data-price="550"
        data-medium="Watercolour"
        data-size="2704">
@@ -277,6 +296,7 @@
     
     
     <a class="work-card" href="works/oxley-market-aubergine.html"
+       data-title="oxley market aubergine"
        data-price="550"
        data-medium="Watercolour"
        data-size="2704">
@@ -296,6 +316,7 @@
     
     
     <a class="work-card" href="works/oxley-market-produce-on-batik.html"
+       data-title="oxley market produce on batik"
        data-price="550"
        data-medium="Watercolour"
        data-size="2704">
@@ -315,6 +336,7 @@
     
     
     <a class="work-card" href="works/sallys-camelias.html"
+       data-title="sally's camelias"
        data-price="550"
        data-medium="Watercolour"
        data-size="2646">
