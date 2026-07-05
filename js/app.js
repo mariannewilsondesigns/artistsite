@@ -169,6 +169,8 @@
           /* toggle the sub-options slide open/closed */
           var isOpening = !mediumSubWrap.classList.contains("is-open");
           mediumSubWrap.classList.toggle("is-open");
+          var arrow = btn.querySelector("[data-arrow]");
+          if(arrow) arrow.textContent = isOpening ? "▼" : "→";
           if(isOpening){
             sortGroup.querySelectorAll("[data-sort]").forEach(function(b){ b.classList.remove("is-active"); });
             btn.classList.add("is-active");
