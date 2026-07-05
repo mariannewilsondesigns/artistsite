@@ -91,5 +91,24 @@
 {% include "_footer.html" %}
 
 <script src="../js/app.js"></script>
+<script>
+  (function(){
+    var orderData = sessionStorage.getItem("worksOrder");
+    if(orderData){
+      try {
+        var order = JSON.parse(orderData);
+        var slug = window.location.pathname.split("/").pop().replace(".html","");
+        var idx = order.indexOf(slug);
+        if(idx > -1){
+          var links = document.querySelectorAll(".work-pager__link");
+          if(links[0] && idx > 0) links[0].href = order[idx-1] + ".html";
+          if(links[1] && idx < order.length - 1) links[1].href = order[idx+1] + ".html";
+          if(idx === 0 && links[0]) links[0].style.visibility = "hidden";
+          if(idx === order.length - 1 && links[1]) links[1].style.visibility = "hidden";
+        }
+      } catch(e){}
+    }
+  })();
+</script>
 </body>
 </html>

@@ -131,6 +131,9 @@
       /* clear grid and re-add only the sorted/filtered cards */
       while(worksGrid.firstChild){ worksGrid.removeChild(worksGrid.firstChild); }
       sorted.forEach(function(card){ worksGrid.appendChild(card); });
+      /* store current order for work page navigation */
+      var slugs = sorted.map(function(c){ return c.getAttribute("data-slug"); });
+      try { sessionStorage.setItem("worksOrder", JSON.stringify(slugs)); } catch(e){}
     }
 
     function sortWorks(mode, dir){
