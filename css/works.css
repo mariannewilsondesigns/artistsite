@@ -246,10 +246,17 @@
   flex-wrap:wrap;
   margin-top:4px;
   align-items:center;
+  justify-content:space-between;
 }
 
-.work-card__sub span:not(:last-child)::after{
+.work-card__sub span:not(:last-child):not(.work-card__price)::after{
   content:"·";
   margin-left:6px;
   color:var(--line);
+}
+
+.work-card__price{
+  margin-left:auto;
+  font-weight:600;
+  color:var(--ink);
 }
