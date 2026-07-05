@@ -67,6 +67,9 @@
           <dt>Support</dt><dd>{{ w.medium.split(' on ')[1] }}</dd>
           <dt>Dimensions</dt><dd>{{ w.dimensions }}</dd>
           <dt>Year</dt><dd>{{ w.year }}</dd>
+          {% if w.price %}
+          <dt>Price</dt><dd>${{ "{:,}".format(w.price) }}</dd>
+          {% endif %}
         </dl>
       </div>
     </div>
