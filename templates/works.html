@@ -42,12 +42,14 @@
           <img src="{{ w.images[0] }}" alt="{{ w.title }}, {{ w.medium }}" loading="lazy">
         </div>
         <div class="work-card__meta">
-          <h3 class="work-card__title">{{ w.title }}</h3>
-          <span class="work-card__tag">{{ group_name }}</span>
+          <div class="work-card__title-row">
+            <h3 class="work-card__title">{{ w.title }}</h3>
+            <span class="work-card__tag">{{ group_name }}</span>
+          </div>
           <p class="work-card__sub">
             <span>{{ w.dimensions }}</span>
-            <span class="work-card__status">{{ w.status }}</span>
           </p>
+          <span class="work-card__status">{{ w.status }}</span>
         </div>
       </a>
       {% endfor %}
