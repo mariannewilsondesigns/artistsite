@@ -91,6 +91,16 @@
   margin-bottom:26px;
 }
 
+.about__sent{
+  margin-top:24px;
+  padding:16px 22px;
+  background:var(--chartreuse);
+  color:var(--ink);
+  border-radius:var(--radius);
+  font-size:0.9rem;
+  font-weight:500;
+}
+
 .contact-form{
   display:flex;
   flex-direction:column;
