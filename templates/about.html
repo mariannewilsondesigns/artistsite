@@ -53,14 +53,22 @@
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" placeholder="Your message" required></textarea>
-        <button class="btn btn--primary" type="submit">Send message</button>
+        <button class="btn btn--primary" type="submit" id="submit-btn">Send message</button>
       </form>
-      <p class="about__sent" id="about-sent" style="display:none;">✓ Sent! Thanks for your message — I'll be in touch soon.</p>
       <script>
-        if(window.location.hash === '#sent'){
-          document.getElementById('about-sent').style.display = 'block';
-          document.querySelector('.contact-form').reset();
-        }
+        (function(){
+          var btn = document.getElementById('submit-btn');
+          if(window.location.hash === '#sent'){
+            btn.textContent = '✓ Sent! I\'ll be in touch soon.';
+            btn.disabled = true;
+            setTimeout(function(){
+              document.querySelector('.contact-form').reset();
+              btn.textContent = 'Send message';
+              btn.disabled = false;
+              window.location.hash = '';
+            }, 4000);
+          }
+        })();
       </script>
     </div>
   </div>
