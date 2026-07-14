@@ -54,21 +54,25 @@
     <div class="about__contact">
       <h2>Drop me a line</h2>
       <p class="about__contact-lede">For enquiries about specific works or commissions – send a note directly.</p>
-      <form class="contact-form" action="https://formsubmit.co/mewilsondesigner@gmail.com" method="POST">
-        <input type="hidden" name="_next" value="https://mariannewilsondesigns.com/about/#sent">
-        <input type="hidden" name="_subject" value="New enquiry from mariannewilsondesigns.com">
-        <input type="text" name="_honey" style="display:none;">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="Message" required></textarea>
+      <form class="contact-form" id="contact-form">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
         <button class="btn btn--primary" type="submit">Send message</button>
       </form>
       <p class="about__sent" id="about-sent" style="display:none;">✓ Sent! Thanks for your message — I'll be in touch soon.</p>
       <script>
-        if(window.location.hash === '#sent'){
+        document.getElementById('contact-form').addEventListener('submit', function(e){
+          e.preventDefault();
+          var name = this.name.value;
+          var email = this.email.value;
+          var message = this.message.value;
+          var subject = encodeURIComponent('Enquiry from mariannewilsondesigns.com');
+          var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+          window.location.href = 'mailto:mewilsondesigner@gmail.com?subject=' + subject + '&body=' + body;
           document.getElementById('about-sent').style.display = 'block';
-          document.querySelector('.contact-form').reset();
-        }
+          this.reset();
+        });
       </script>
     </div>
   </div>
