@@ -54,27 +54,34 @@
     <div class="about__contact">
       <h2>Drop me a line</h2>
       <p class="about__contact-lede">For enquiries about specific works or commissions – send a note directly.</p>
-      <form class="contact-form" action="https://formspree.io/f/mjgnkwbl" method="POST">
-        <input type="hidden" name="_next" value="https://mariannewilsondesigns.com/about/#sent">
+      <form class="contact-form" id="contact-form">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" placeholder="Your message" required></textarea>
         <button class="btn btn--primary" type="submit" id="submit-btn">Send message</button>
       </form>
       <script>
-        (function(){
+        document.getElementById('contact-form').addEventListener('submit', function(e){
+          e.preventDefault();
           var btn = document.getElementById('submit-btn');
-          if(window.location.hash === '#sent'){
-            btn.textContent = '✓ Sent! I\'ll be in touch soon.';
-            btn.disabled = true;
-            setTimeout(function(){
-              document.querySelector('.contact-form').reset();
-              btn.textContent = 'Send message';
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
+          var data = new FormData(this);
+          fetch('https://formspree.io/f/mjgnkwbl', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+            .then(function(r){ return r.json(); })
+            .then(function(){
+              btn.textContent = '✓ Sent! I\'ll be in touch soon.';
+              setTimeout(function(){
+                document.getElementById('contact-form').reset();
+                btn.textContent = 'Send message';
+                btn.disabled = false;
+              }, 4000);
+            })
+            .catch(function(){
+              btn.textContent = 'Something went wrong — try again';
               btn.disabled = false;
-              window.location.hash = '';
-            }, 4000);
-          }
-        })();
+            });
+        });
       </script>
     </div>
   </div>
