@@ -180,6 +180,7 @@
   aspect-ratio:4/5;
   overflow:hidden;
   background:var(--stone);
+  padding:8px;
 }
 
 .work-card__frame img{
