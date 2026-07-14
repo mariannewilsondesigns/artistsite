@@ -95,11 +95,11 @@
   </div>
 
   <nav class="work-pager">
-    <a class="work-pager__link" href="flowers-from-the-garden/" data-slug="flowers-from-the-garden">
+    <a class="work-pager__link" href="../flowers-from-the-garden/" data-slug="flowers-from-the-garden">
       <span class="work-pager__label">← Previous</span>
       <span class="work-pager__title">Flowers from the Garden</span>
     </a>
-    <a class="work-pager__link work-pager__link--next" href="narcissus-in-sunlight/" data-slug="narcissus-in-sunlight">
+    <a class="work-pager__link work-pager__link--next" href="../narcissus-in-sunlight/" data-slug="narcissus-in-sunlight">
       <span class="work-pager__label">Next →</span>
       <span class="work-pager__title">Narcissus in Sunlight</span>
     </a>
@@ -143,11 +143,11 @@
       var prevEntry = entries[(idx - 1 + entries.length) % entries.length];
       var nextEntry = entries[(idx + 1) % entries.length];
       if(links[0]){
-        links[0].href = prevEntry.slug + "/";
+        links[0].href = "../" + prevEntry.slug + "/";
         links[0].querySelector(".work-pager__title").textContent = prevEntry.title;
       }
       if(links[1]){
-        links[1].href = nextEntry.slug + "/";
+        links[1].href = "../" + nextEntry.slug + "/";
         links[1].querySelector(".work-pager__title").textContent = nextEntry.title;
       }
     }
