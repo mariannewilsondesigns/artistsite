@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Penny's Basque Figs | Marianne Wilson</title>
-<meta name="description" content="Penny's Basque Figs, Oil on Canvas, 54 × 54 cm. Ma write a description for this. Minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.">
+<meta name="description" content="Penny's Basque Figs, Oil on Canvas, 54 × 54 cm. I have the most wonderful friends! I first met Penny, an interior designer, when we lived in the village of Ogbourne St George, Berkshire. Last year, I visited her in the Basque region, where she lives in a stunning farmhouse surrounded by a hedge of fig trees.">
 <meta property="og:title" content="Penny's Basque Figs | Marianne Wilson">
 <meta property="og:type" content="article">
 <meta property="og:image" content="../images/works/Penny's Basque Figs - Oil/01.jpg">
@@ -68,11 +68,11 @@
     <div class="work-info">
       <h1 class="work-info__title">Penny's Basque Figs</h1>
       <p class="work-info__medium">Oil on Canvas</p>
-      <p class="work-info__dims">54 × 54 cm · 2025</p>
+      <p class="work-info__dims">54 × 54 cm · 2026</p>
 
       <span class="work-info__status">Available</span>
 
-      <p class="work-info__desc">Ma write a description for this. Minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute.</p>
+      <p class="work-info__desc">I have the most wonderful friends! I first met Penny, an interior designer, when we lived in the village of Ogbourne St George, Berkshire. Last year, I visited her in the Basque region, where she lives in a stunning farmhouse surrounded by a hedge of fig trees.</p>
 
       <div class="work-info__actions">
         <a class="btn btn--primary" href="mailto:mewilsondesigner@gmail.com?subject=Enquiry%20—%20Penny%27s%20Basque%20Figs%20(Plate%2004)">
@@ -85,7 +85,7 @@
           <dt>Medium</dt><dd>Oil</dd>
           <dt>Support</dt><dd>Canvas</dd>
           <dt>Dimensions</dt><dd>54 × 54 cm</dd>
-          <dt>Year</dt><dd>2025</dd>
+          <dt>Year</dt><dd>2026</dd>
           
           <dt>Price</dt><dd>$1,300</dd>
           
@@ -95,11 +95,11 @@
   </div>
 
   <nav class="work-pager">
-    <a class="work-pager__link" href="flowers-from-the-garden.html">
+    <a class="work-pager__link" href="oxley-market-produce-on-batik.html" data-slug="oxley-market-produce-on-batik">
       <span class="work-pager__label">← Previous</span>
-      <span class="work-pager__title">Flowers from the Garden</span>
+      <span class="work-pager__title">Oxley Market Produce on Batik</span>
     </a>
-    <a class="work-pager__link work-pager__link--next" href="pony-clubs-nasturtiums.html">
+    <a class="work-pager__link work-pager__link--next" href="pony-clubs-nasturtiums.html" data-slug="pony-clubs-nasturtiums">
       <span class="work-pager__label">Next →</span>
       <span class="work-pager__title">Pony Club's Nasturtiums</span>
     </a>
@@ -123,20 +123,33 @@
 <script src="../js/app.js"></script>
 <script>
   (function(){
+    /* alphabetical fallback — array of {slug, title} */
+    var defaultEntries = [{"slug": "alis-hippeastrums", "title": "Ali\u0027s Hippeastrums"}, {"slug": "alis-xanthostemon", "title": "Ali\u0027s Xanthostamen"}, {"slug": "annas-nasturtiums", "title": "Anna\u0027s Nasturtiums"}, {"slug": "cabbage-from-the-market", "title": "Cabbage from the Market"}, {"slug": "cabbage-patch", "title": "Cabbage Patch"}, {"slug": "floral-arrangement-on-kenzo-scarf", "title": "Floral Arrangement on Kenzo Scarf"}, {"slug": "flowers-from-the-garden", "title": "Flowers from the Garden"}, {"slug": "lilies-from-sue", "title": "Lilies from Sue"}, {"slug": "narcissus-in-sunlight", "title": "Narcissus in Sunlight"}, {"slug": "oxley-market-aubergine", "title": "Oxley Market Aubergine"}, {"slug": "oxley-market-produce-on-batik", "title": "Oxley Market Produce on Batik"}, {"slug": "pennys-basque-figs", "title": "Penny\u0027s Basque Figs"}, {"slug": "pony-clubs-nasturtiums", "title": "Pony Club\u0027s Nasturtiums"}, {"slug": "protea-from-ewan", "title": "Protea from Ewan"}, {"slug": "sallys-camellias", "title": "Sally\u0027s Camellias"}];
+
     var orderData = sessionStorage.getItem("worksOrder");
+    var entries;
     if(orderData){
-      try {
-        var order = JSON.parse(orderData);
-        var slug = window.location.pathname.split("/").pop().replace(".html","");
-        var idx = order.indexOf(slug);
-        if(idx > -1){
-          var links = document.querySelectorAll(".work-pager__link");
-          if(links[0] && idx > 0) links[0].href = order[idx-1] + ".html";
-          if(links[1] && idx < order.length - 1) links[1].href = order[idx+1] + ".html";
-          if(idx === 0 && links[0]) links[0].style.visibility = "hidden";
-          if(idx === order.length - 1 && links[1]) links[1].style.visibility = "hidden";
-        }
-      } catch(e){}
+      try { entries = JSON.parse(orderData); } catch(e){}
+    }
+    if(!entries) entries = defaultEntries;
+
+    var slug = window.location.pathname.split("/").pop().replace(".html","");
+    var idx = -1;
+    for(var i = 0; i < entries.length; i++){
+      if(entries[i].slug === slug){ idx = i; break; }
+    }
+    if(idx > -1){
+      var links = document.querySelectorAll(".work-pager__link");
+      var prevEntry = entries[(idx - 1 + entries.length) % entries.length];
+      var nextEntry = entries[(idx + 1) % entries.length];
+      if(links[0]){
+        links[0].href = prevEntry.slug + ".html";
+        links[0].querySelector(".work-pager__title").textContent = prevEntry.title;
+      }
+      if(links[1]){
+        links[1].href = nextEntry.slug + ".html";
+        links[1].querySelector(".work-pager__title").textContent = nextEntry.title;
+      }
     }
   })();
 </script>

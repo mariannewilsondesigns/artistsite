@@ -52,7 +52,7 @@
       <p class="work-info__medium">{{ w.medium }}</p>
       <p class="work-info__dims">{{ w.dimensions }} · {{ w.year }}</p>
 
-      <span class="work-info__status">{{ w.status }}</span>
+      <span class="work-info__status{% if w.status == 'Sold' %} work-info__status--sold{% endif %}">{{ w.status }}</span>
 
       <p class="work-info__desc">{{ w.description }}</p>
 
@@ -77,13 +77,13 @@
   </div>
 
   <nav class="work-pager">
-    <a class="work-pager__link" href="{{ prev.slug }}.html">
+    <a class="work-pager__link" href="{{ prev_alpha.slug }}.html" data-slug="{{ prev_alpha.slug }}">
       <span class="work-pager__label">← Previous</span>
-      <span class="work-pager__title">{{ prev.title }}</span>
+      <span class="work-pager__title">{{ prev_alpha.title }}</span>
     </a>
-    <a class="work-pager__link work-pager__link--next" href="{{ next.slug }}.html">
+    <a class="work-pager__link work-pager__link--next" href="{{ next_alpha.slug }}.html" data-slug="{{ next_alpha.slug }}">
       <span class="work-pager__label">Next →</span>
-      <span class="work-pager__title">{{ next.title }}</span>
+      <span class="work-pager__title">{{ next_alpha.title }}</span>
     </a>
   </nav>
 </main>
@@ -93,20 +93,33 @@
 <script src="../js/app.js"></script>
 <script>
   (function(){
+    /* alphabetical fallback — array of {slug, title} */
+    var defaultEntries = {{ alpha_entries | tojson | safe }};
+
     var orderData = sessionStorage.getItem("worksOrder");
+    var entries;
     if(orderData){
-      try {
-        var order = JSON.parse(orderData);
-        var slug = window.location.pathname.split("/").pop().replace(".html","");
-        var idx = order.indexOf(slug);
-        if(idx > -1){
-          var links = document.querySelectorAll(".work-pager__link");
-          if(links[0] && idx > 0) links[0].href = order[idx-1] + ".html";
-          if(links[1] && idx < order.length - 1) links[1].href = order[idx+1] + ".html";
-          if(idx === 0 && links[0]) links[0].style.visibility = "hidden";
-          if(idx === order.length - 1 && links[1]) links[1].style.visibility = "hidden";
-        }
-      } catch(e){}
+      try { entries = JSON.parse(orderData); } catch(e){}
+    }
+    if(!entries) entries = defaultEntries;
+
+    var slug = window.location.pathname.split("/").pop().replace(".html","");
+    var idx = -1;
+    for(var i = 0; i < entries.length; i++){
+      if(entries[i].slug === slug){ idx = i; break; }
+    }
+    if(idx > -1){
+      var links = document.querySelectorAll(".work-pager__link");
+      var prevEntry = entries[(idx - 1 + entries.length) % entries.length];
+      var nextEntry = entries[(idx + 1) % entries.length];
+      if(links[0]){
+        links[0].href = prevEntry.slug + ".html";
+        links[0].querySelector(".work-pager__title").textContent = prevEntry.title;
+      }
+      if(links[1]){
+        links[1].href = nextEntry.slug + ".html";
+        links[1].querySelector(".work-pager__title").textContent = nextEntry.title;
+      }
     }
   })();
 </script>
