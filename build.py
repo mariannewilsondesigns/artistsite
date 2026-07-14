@@ -38,21 +38,23 @@ def main():
     env.get_template("index.html").stream(root="", artist=artist).dump(
         os.path.join(ROOT, "index.html"))
 
-    # --- works.html (grid) ---
+    # --- works/ (grid) ---
+    os.makedirs(os.path.join(ROOT, "works"), exist_ok=True)
     env.get_template("works.html").stream(
         root="", artist=artist, works=works, medium_groups=medium_groups
-    ).dump(os.path.join(ROOT, "works.html"))
+    ).dump(os.path.join(ROOT, "works", "index.html"))
 
-    # --- about.html ---
+    # --- about/ ---
+    os.makedirs(os.path.join(ROOT, "about"), exist_ok=True)
     env.get_template("about.html").stream(root="", artist=artist).dump(
-        os.path.join(ROOT, "about.html"))
+        os.path.join(ROOT, "about", "index.html"))
 
     # --- alphabetical ordering for default (fallback) prev/next ---
     alpha_works = sorted(works, key=lambda w: w["title"].lower())
     an = len(alpha_works)
     alpha_lookup = {w["slug"]: i for i, w in enumerate(alpha_works)}
 
-    # --- works/{slug}.html (one per artwork, prev/next within medium group) ---
+    # --- works/{slug}/ (one per artwork, prev/next within medium group) ---
     os.makedirs(os.path.join(ROOT, "works"), exist_ok=True)
     for grp_name, grp_works in medium_groups:
         gn = len(grp_works)
@@ -64,11 +66,12 @@ def main():
             prev_alpha = alpha_works[(ai - 1 + an) % an]
             next_alpha = alpha_works[(ai + 1) % an]
             alpha_entries = [{"slug": aw["slug"], "title": aw["title"]} for aw in alpha_works]
+            os.makedirs(os.path.join(ROOT, "works", w["slug"]), exist_ok=True)
             env.get_template("work.html").stream(
                 root="../", artist=artist, w=w, prev=prev_w, next=next_w,
                 prev_alpha=prev_alpha, next_alpha=next_alpha,
                 alpha_entries=alpha_entries, total=gn
-            ).dump(os.path.join(ROOT, "works", w["slug"] + ".html"))
+            ).dump(os.path.join(ROOT, "works", w["slug"], "index.html"))
 
     n = len(works)
     print(f"Built {n} artwork pages across {len(medium_groups)} media + index, works, about.")

@@ -7,20 +7,20 @@
 <meta name="description" content="{{ w.title }}, {{ w.medium }}, {{ w.dimensions }}. {{ w.description }}">
 <meta property="og:title" content="{{ w.title }} | Marianne Wilson">
 <meta property="og:type" content="article">
-<meta property="og:image" content="../{{ w.images[0] }}">
-<link rel="icon" type="image/svg+xml" href="../images/site/favi.svg">
+<meta property="og:image" content="/{{ w.images[0] }}">
+<link rel="icon" type="image/svg+xml" href="/images/site/favi.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css">
-<link rel="stylesheet" href="../css/work-detail.css">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/work-detail.css">
 </head>
 <body>
 
 {% include "_nav.html" %}
 
 <main class="work-detail">
-  <p class="work-crumb"><a href="../works.html">Works</a> / {{ w.medium_group }} / {{ w.title }}</p>
+  <p class="work-crumb"><a href="/works/">Works</a> / {{ w.medium_group }} / {{ w.title }}</p>
 
   <div class="work-layout">
     <div class="carousel" aria-roledescription="carousel" aria-label="{{ w.title }} images">
@@ -28,7 +28,7 @@
         <div class="carousel__track">
           {% for img in w.images %}
           <div class="carousel__slide">
-            <img src="../{{ img }}" alt="{{ w.title }} — view {{ loop.index }}" loading="{{ 'eager' if loop.first else 'lazy' }}">
+            <img src="/{{ img }}" alt="{{ w.title }} — view {{ loop.index }}" loading="{{ 'eager' if loop.first else 'lazy' }}">
           </div>
           {% endfor %}
         </div>
@@ -77,11 +77,11 @@
   </div>
 
   <nav class="work-pager">
-    <a class="work-pager__link" href="{{ prev_alpha.slug }}.html" data-slug="{{ prev_alpha.slug }}">
+    <a class="work-pager__link" href="{{ prev_alpha.slug }}/" data-slug="{{ prev_alpha.slug }}">
       <span class="work-pager__label">← Previous</span>
       <span class="work-pager__title">{{ prev_alpha.title }}</span>
     </a>
-    <a class="work-pager__link work-pager__link--next" href="{{ next_alpha.slug }}.html" data-slug="{{ next_alpha.slug }}">
+    <a class="work-pager__link work-pager__link--next" href="{{ next_alpha.slug }}/" data-slug="{{ next_alpha.slug }}">
       <span class="work-pager__label">Next →</span>
       <span class="work-pager__title">{{ next_alpha.title }}</span>
     </a>
@@ -90,7 +90,7 @@
 
 {% include "_footer.html" %}
 
-<script src="../js/app.js"></script>
+<script src="/js/app.js"></script>
 <script>
   (function(){
     /* alphabetical fallback — array of {slug, title} */
@@ -113,11 +113,11 @@
       var prevEntry = entries[(idx - 1 + entries.length) % entries.length];
       var nextEntry = entries[(idx + 1) % entries.length];
       if(links[0]){
-        links[0].href = prevEntry.slug + ".html";
+        links[0].href = prevEntry.slug + "/";
         links[0].querySelector(".work-pager__title").textContent = prevEntry.title;
       }
       if(links[1]){
-        links[1].href = nextEntry.slug + ".html";
+        links[1].href = nextEntry.slug + "/";
         links[1].querySelector(".work-pager__title").textContent = nextEntry.title;
       }
     }
