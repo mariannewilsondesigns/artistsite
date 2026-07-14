@@ -117,12 +117,13 @@
     var activeFilter = null;
 
     /* Default: alphabetical by title */
+    var defaultOrder = cards.slice();
+
     function alphabeticalOrder(){
       return cards.slice().sort(function(a,b){
         return (a.getAttribute("data-title") || "").localeCompare(b.getAttribute("data-title") || "");
       });
     }
-    var defaultOrder = alphabeticalOrder();
 
     function getActiveBtn(){ return sortGroup.querySelector("[data-sort].is-active"); }
     function getSubBtn(){ return mediumSub && mediumSub.querySelector(".is-active"); }
@@ -131,9 +132,12 @@
       /* clear grid and re-add only the sorted/filtered cards */
       while(worksGrid.firstChild){ worksGrid.removeChild(worksGrid.firstChild); }
       sorted.forEach(function(card){ worksGrid.appendChild(card); });
-      /* store current order for work page navigation */
-      var slugs = sorted.map(function(c){ return c.getAttribute("data-slug"); });
-      try { sessionStorage.setItem("worksOrder", JSON.stringify(slugs)); } catch(e){}
+      /* store current order + titles for work page navigation */
+      var entries = sorted.map(function(c){
+        var titleEl = c.querySelector(".work-card__title");
+        return {slug: c.getAttribute("data-slug"), title: titleEl ? titleEl.textContent : ""};
+      });
+      try { sessionStorage.setItem("worksOrder", JSON.stringify(entries)); } catch(e){}
     }
 
     function sortWorks(mode, dir){

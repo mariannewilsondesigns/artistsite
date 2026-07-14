@@ -47,6 +47,11 @@ def main():
     env.get_template("about.html").stream(root="", artist=artist).dump(
         os.path.join(ROOT, "about.html"))
 
+    # --- alphabetical ordering for default (fallback) prev/next ---
+    alpha_works = sorted(works, key=lambda w: w["title"].lower())
+    an = len(alpha_works)
+    alpha_lookup = {w["slug"]: i for i, w in enumerate(alpha_works)}
+
     # --- works/{slug}.html (one per artwork, prev/next within medium group) ---
     os.makedirs(os.path.join(ROOT, "works"), exist_ok=True)
     for grp_name, grp_works in medium_groups:
@@ -54,8 +59,15 @@ def main():
         for i, w in enumerate(grp_works):
             prev_w = grp_works[i - 1]
             next_w = grp_works[(i + 1) % gn]
+            # also compute alphabetical fallback prev/next across all works
+            ai = alpha_lookup[w["slug"]]
+            prev_alpha = alpha_works[(ai - 1 + an) % an]
+            next_alpha = alpha_works[(ai + 1) % an]
+            alpha_entries = [{"slug": aw["slug"], "title": aw["title"]} for aw in alpha_works]
             env.get_template("work.html").stream(
-                root="../", artist=artist, w=w, prev=prev_w, next=next_w, total=gn
+                root="../", artist=artist, w=w, prev=prev_w, next=next_w,
+                prev_alpha=prev_alpha, next_alpha=next_alpha,
+                alpha_entries=alpha_entries, total=gn
             ).dump(os.path.join(ROOT, "works", w["slug"] + ".html"))
 
     n = len(works)
