@@ -49,7 +49,7 @@
   <section class="works-grid" data-works-grid>
     {% for w in works %}
     {% set dims = w.dimensions.split(' × ') %}
-    <a class="work-card" href="works/{{ w.slug }}/"
+    <a class="work-card" href="{{ w.slug }}/"
        data-slug="{{ w.slug }}"
        data-title="{{ w.title | lower }}"
        data-price="{{ w.price or 0 }}"
