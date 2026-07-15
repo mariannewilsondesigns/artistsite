@@ -69,7 +69,7 @@
           <dt>Dimensions</dt><dd>{{ w.dimensions }}</dd>
           <dt>Year</dt><dd>{{ w.year }}</dd>
           {% if w.price %}
-          <dt>Price</dt><dd>${{ "{:,}".format(w.price) }}</dd>
+          <dt>Price</dt><dd>AUD${{ "{:,}".format(w.price) }}</dd>
           {% endif %}
         </dl>
       </div>
