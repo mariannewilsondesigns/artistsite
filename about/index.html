@@ -18,7 +18,7 @@
 <body>
 
 <nav class="site-nav">
-  <a class="site-nav__mark" href="/">Marianne Wilson</a>
+  <a class="site-nav__mark" href="/">Marianne Wilson Designs</a>
   <ul class="site-nav__links">
     <li><a href="/works/" class="">Works</a></li>
     <li><a href="/about/" class="">About</a></li>
@@ -37,23 +37,22 @@
 
     <div class="about__body">
       <p>Marianne Wilson is a Brisbane-based artist and former London-based textile designer whose work is inspired by an abundance of colour, gardens, and everyday beauty.</p>
-      <p>Born in South Africa, Marianne spent many years travelling and working as a textile designer. After leaving the industry, she shifted her focus to painting and began creating and selling her own artwork.</p>
-      <p>Starting with watercolour and later moving into acrylic and oil, Marianne's paintings reflect her love of Australian flora, classic interiors, and decorative porcelain. Her garden (borderline a forest) in The Gap and her collection of ginger jars are ongoing sources of inspiration.</p>
-      <p>Alongside her original artworks, Marianne has designed pieces for most rooms in the home, including cushions, tablecloths, dishtowels and more. More recently, she is focused on larger canvas works designed as statement pieces for the home.</p>
-      <p>Marianne's work has been exhibited in and around Brisbane and is now a family enterprise, with her husband Ewan framing many of her pieces by hand using locally sourced wood.</p>
+      <p>Born in South Africa, Marianne spent many years travelling and working in textile design before turning her focus to painting. Beginning with watercolour and later moving into acrylic and oil, her work celebrates Australian flora, classic interiors, and decorative porcelain. Her garden (borderline a forest) in The Gap and her collection of ginger jars remain constant sources of inspiration.</p>
+      <p>Alongside her original artworks, Marianne has designed homewares including cushions, tablecloths, and dishtowels. Today, her focus is on large-scale paintings created as statement pieces for the home.</p>
+      <p>Her work has been exhibited in and around Brisbane and is now a family enterprise, with her husband, Ewan, hand-framing many pieces using locally sourced wood.</p>
     </div>
 
     <div class="about__contact">
-      <h2 id="contact-form">Drop me a line</h2>
+      <h2 id="contact-form" class="eyebrow about__contact-heading">Drop me a line</h2>
       <p class="about__contact-lede">For enquiries about specific works or commissions – send a note directly.</p>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contactForm">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
-        <textarea name="message" placeholder="Your message" required></textarea>
+        <textarea name="message" placeholder="Your message (commission, particular artwork etc.)" required></textarea>
         <button class="btn btn--primary" type="submit" id="submit-btn">Send message</button>
       </form>
       <script>
-        document.getElementById('contact-form').addEventListener('submit', function(e){
+        document.getElementById('contactForm').addEventListener('submit', function(e){
           e.preventDefault();
           var btn = document.getElementById('submit-btn');
           btn.textContent = 'Sending...';
@@ -64,7 +63,7 @@
             .then(function(){
               btn.textContent = '✓ Sent! I\'ll be in touch soon.';
               setTimeout(function(){
-                document.getElementById('contact-form').reset();
+                document.getElementById('contactForm').reset();
                 btn.textContent = 'Send message';
                 btn.disabled = false;
               }, 4000);
@@ -81,7 +80,7 @@
 
 <footer class="site-footer">
   <div class="site-footer__top">
-    <div class="site-footer__mark">Marianne Wilson</div>
+    <div class="site-footer__mark">Marianne Wilson Designs</div>
     <ul class="site-footer__links">
       <li><a href="https://www.instagram.com/mariannewilsondesigns/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="mailto:mewilsondesigner@gmail.com">mewilsondesigner@gmail.com</a></li>

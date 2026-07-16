@@ -128,10 +128,30 @@
     function getActiveBtn(){ return sortGroup.querySelector("[data-sort].is-active"); }
     function getSubBtn(){ return mediumSub && mediumSub.querySelector(".is-active"); }
 
+    function getColumnCount(){
+      return parseInt(window.getComputedStyle(worksGrid).columnCount, 10) || 1;
+    }
+
+    /* Reorder a row-major sorted array so CSS columns display it row-by-row */
+    function reorderForColumns(sorted){
+      var cols = getColumnCount();
+      var n = sorted.length;
+      if(cols <= 1 || n <= cols) return sorted;
+      var result = [];
+      for(var c = 0; c < cols; c++){
+        for(var r = 0; r < n; r += cols){
+          if(c + r < n) result.push(sorted[c + r]);
+        }
+      }
+      return result;
+    }
+
     function renderCards(sorted){
+      /* reorder so CSS columns display sorted order row-by-row */
+      var ordered = reorderForColumns(sorted);
       /* clear grid and re-add only the sorted/filtered cards */
       while(worksGrid.firstChild){ worksGrid.removeChild(worksGrid.firstChild); }
-      sorted.forEach(function(card){ worksGrid.appendChild(card); });
+      ordered.forEach(function(card){ worksGrid.appendChild(card); });
       /* store current order + titles for work page navigation */
       var entries = sorted.map(function(c){
         var titleEl = c.querySelector(".work-card__title");
