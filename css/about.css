@@ -36,7 +36,7 @@
 
 .about__content .eyebrow{margin-bottom:18px;}
 
-.about__content h1{margin-bottom:28px;}
+.about__content h1{margin-bottom:28px;white-space:nowrap;}
 
 .about__lede{
   font-size:1.15rem;

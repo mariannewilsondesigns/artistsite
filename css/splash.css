@@ -18,7 +18,7 @@
 }
 
 .splash.is-ready .splash__img{
-  opacity:0.55;
+  opacity:1;
   transform:scale(1);
 }
 
@@ -26,9 +26,14 @@
   content:"";
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(180deg, rgba(36,24,49,0.35) 0%, rgba(36,24,49,0.55) 55%, rgba(36,24,49,0.92) 100%);
+  background:none;
   z-index:1;
+}
+
+.splash__title,
+.splash__enter,
+.splash__scroll{
+  text-shadow:0 2px 12px rgba(0,0,0,0.35);
 }
 
 .splash__content{
