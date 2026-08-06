@@ -109,7 +109,7 @@
       "dimensions": "33 × 43 cm",
       "year": "2026",
       "price": 720,
-      "status": "Available",
+      "status": "Sold",
       "description": "When I saw this colourful jug at Lynda's home, I immediately knew it had to hold these vibrant nasturtiums. The jug was reluctantly returned!",
       "slug": "annas-nasturtiums",
       "plate": "01",
@@ -144,7 +144,7 @@
       "placeholder": false,
       "title": "Flowers from the Garden",
       "medium": "Oil on Canvas",
-      "dimensions": "54 × 54 cm",
+      "dimensions": "54 × 64 cm",
       "year": "2026",
       "price": 1300,
       "status": "Available",
@@ -163,7 +163,7 @@
       "placeholder": false,
       "title": "Penny's Basque Figs",
       "medium": "Oil on Canvas",
-      "dimensions": "54 × 54 cm",
+      "dimensions": "54 × 64 cm",
       "year": "2026",
       "price": 1300,
       "status": "Available",
@@ -194,25 +194,6 @@
         "images/works/Pony Club's Nasturtiums - Oil/01.jpg",
         "images/works/Pony Club's Nasturtiums - Oil/02.jpg",
         "images/works/Pony Club's Nasturtiums - Oil/03.jpg"
-      ]
-    },
-    {
-      "id": 11,
-      "placeholder": false,
-      "title": "Protea from Ewan",
-      "medium": "Oil on Canvas",
-      "dimensions": "33 × 43 cm",
-      "year": "2025",
-      "price": 720,
-      "status": "Available",
-      "description": "These magnificent flowers hold a special place in my heart, reminding me of my birth country, South Africa.",
-      "slug": "protea-from-ewan",
-      "plate": "06",
-      "medium_group": "Oil",
-      "images": [
-        "images/works/Protea from Ewan/01.jpg",
-        "images/works/Protea from Ewan/02.jpg",
-        "images/works/Protea from Ewan/03.jpg"
       ]
     },
     {

@@ -65,7 +65,11 @@
         </div>
         <p class="work-card__sub">
           <span>{{ w.dimensions }}</span>
+          {% if w.status == 'Sold' %}
+          <span class="work-card__status">SOLD</span>
+          {% else %}
           {% if w.price %}<span class="work-card__price">AUD${{ "{:,.0f}".format(w.price) }}</span>{% endif %}
+          {% endif %}
         </p>
       </div>
     </a>
