@@ -3,7 +3,7 @@ Rebuilds the entire static site from data/works.json.
 Run this any time you edit data/works.json (new titles, images, descriptions).
     python3 build.py
 """
-import json, os, itertools
+import json, os, itertools, shutil
 from jinja2 import Environment, FileSystemLoader
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -24,6 +24,23 @@ def build_medium_groups(works):
             ordered.append((g, groups[g]))
     return ordered
 
+def cleanup_stale_work_pages(root, works):
+    """Remove generated work pages for slugs no longer present in data/works.json."""
+    works_dir = os.path.join(root, "works")
+    if not os.path.isdir(works_dir):
+        return
+
+    valid_slugs = {w["slug"] for w in works}
+    for entry in os.listdir(works_dir):
+        if entry == "index.html":
+            continue
+        entry_path = os.path.join(works_dir, entry)
+        if os.path.isdir(entry_path) and entry not in valid_slugs:
+            shutil.rmtree(entry_path)
+        elif os.path.isfile(entry_path):
+            os.remove(entry_path)
+
+
 def main():
     with open(DATA_FILE) as f:
         data = json.load(f)
@@ -33,6 +50,7 @@ def main():
     env = Environment(loader=FileSystemLoader(TEMPLATES), autoescape=False)
 
     medium_groups = build_medium_groups(works)
+    cleanup_stale_work_pages(ROOT, works)
 
     # --- index.html (splash) ---
     env.get_template("index.html").stream(root="", artist=artist).dump(
