@@ -95,7 +95,7 @@ p:last-child{margin-bottom:0;}
   justify-content:space-between;
   padding:0 var(--edge);
   z-index:100;
-  background:rgba(250,248,241,0.70);
+  background:rgba(36,24,49,0.08);
   backdrop-filter:blur(18px) saturate(140%);
   -webkit-backdrop-filter:blur(18px) saturate(140%);
   border-bottom:1px solid transparent;
