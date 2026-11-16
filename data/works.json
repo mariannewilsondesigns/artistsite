@@ -7,44 +7,6 @@
   },
   "works": [
     {
-      "id": 1,
-      "placeholder": false,
-      "title": "Ali's Hippeastrums",
-      "medium": "Acrylic on Canvas",
-      "dimensions": "79 × 106 cm",
-      "year": "2026",
-      "price": 2600,
-      "status": "Available",
-      "description": "The inspiration for this painting comes from the exquisite garden of my cousin Ali on Mt Tamborine.",
-      "slug": "alis-hippeastrums",
-      "plate": "01",
-      "medium_group": "Acrylic",
-      "images": [
-        "images/works/Ali's Hippeastrums - Acrylic/01.jpg",
-        "images/works/Ali's Hippeastrums - Acrylic/02.jpg",
-        "images/works/Ali's Hippeastrums - Acrylic/03.jpg"
-      ]
-    },
-    {
-      "id": 2,
-      "placeholder": false,
-      "title": "Ali's Xanthostamen",
-      "medium": "Acrylic on Canvas",
-      "dimensions": "33 × 43 cm",
-      "year": "2025",
-      "price": 720,
-      "status": "Available",
-      "description": "Arranged in my favourite Carrol Boyes coffee mug, this beautiful Australian shrub grows in Ali's native garden on Mt Tamborine.",
-      "slug": "alis-xanthostemon",
-      "plate": "02",
-      "medium_group": "Acrylic",
-      "images": [
-        "images/works/Ali's Xanthostemon - Acrylic/01.jpg",
-        "images/works/Ali's Xanthostemon - Acrylic/02.jpg",
-        "images/works/Ali's Xanthostemon - Acrylic/03.jpg"
-      ]
-    },
-    {
       "id": 3,
       "placeholder": false,
       "title": "Cabbage Patch",
@@ -58,47 +20,9 @@
       "plate": "03",
       "medium_group": "Acrylic",
       "images": [
-        "images/works/Cabbage Patch - Acrylic /01.jpg",
-        "images/works/Cabbage Patch - Acrylic /02.jpg",
-        "images/works/Cabbage Patch - Acrylic /03.jpg"
-      ]
-    },
-    {
-      "id": 4,
-      "placeholder": false,
-      "title": "Lilies from Sue",
-      "medium": "Acrylic on Canvas",
-      "dimensions": "33 × 43 cm",
-      "year": "2026",
-      "price": 720,
-      "status": "Available",
-      "description": "Sue arrived for dinner with these lilies in hand, and they were arranged in one of my favourite vases from Spitalfields Market in London.",
-      "slug": "lilies-from-sue",
-      "plate": "04",
-      "medium_group": "Acrylic",
-      "images": [
-        "images/works/Lillies from Sue - Acrylic/01.jpg",
-        "images/works/Lillies from Sue - Acrylic/02.jpg",
-        "images/works/Lillies from Sue - Acrylic/03.jpg"
-      ]
-    },
-    {
-      "id": 5,
-      "placeholder": false,
-      "title": "Narcissus in Sunlight",
-      "medium": "Acrylic on Canvas",
-      "dimensions": "33 × 43 cm",
-      "year": "2026",
-      "price": 720,
-      "status": "Available",
-      "description": "The scent of a flower can transport you back to a special moment in your life. This painting takes me back to my grandfather's bulb garden, when I was just five years old.",
-      "slug": "narcissus-in-sunlight",
-      "plate": "05",
-      "medium_group": "Acrylic",
-      "images": [
-        "images/works/Narcissus - Acrylic/01.jpg",
-        "images/works/Narcissus - Acrylic/02.jpg",
-        "images/works/Narcissus - Acrylic/03.jpg"
+        "images/works/Cabbage Patch - Acrylic/01.jpg",
+        "images/works/Cabbage Patch - Acrylic/02.jpg",
+        "images/works/Cabbage Patch - Acrylic/03.jpg"
       ]
     },
     {
@@ -118,82 +42,6 @@
         "images/works/Anna's Nasturtiums - Oil/01.jpg",
         "images/works/Anna's Nasturtiums - Oil/02.jpg",
         "images/works/Anna's Nasturtiums - Oil/03.jpg"
-      ]
-    },
-    {
-      "id": 7,
-      "placeholder": false,
-      "title": "Floral Arrangement on Kenzo Scarf",
-      "medium": "Oil on Canvas",
-      "dimensions": "70 × 106 cm",
-      "year": "2026",
-      "price": 2600,
-      "status": "Available",
-      "description": "My absolute favourite scarf, bought at the Kenzo shop in Paris when I travelled abroad as a textile designer. It appears often throughout my artwork and continues to inspire me.",
-      "slug": "floral-arrangement-on-kenzo-scarf",
-      "plate": "02",
-      "medium_group": "Oil",
-      "images": [
-        "images/works/Floral Arrangement on Kenzo Scarf - Oil/01.jpg",
-        "images/works/Floral Arrangement on Kenzo Scarf - Oil/02.jpg",
-        "images/works/Floral Arrangement on Kenzo Scarf - Oil/03.jpg"
-      ]
-    },
-    {
-      "id": 8,
-      "placeholder": false,
-      "title": "Flowers from the Garden",
-      "medium": "Oil on Canvas",
-      "dimensions": "54 × 64 cm",
-      "year": "2026",
-      "price": 1300,
-      "status": "Available",
-      "description": "A looser oil painting of seasonal flowers from my garden, arranged in a favourite ginger jar discovered at a flea market in Amsterdam.",
-      "slug": "flowers-from-the-garden",
-      "plate": "03",
-      "medium_group": "Oil",
-      "images": [
-        "images/works/Flowers from my Garden - Oil/01.jpg",
-        "images/works/Flowers from my Garden - Oil/02.jpg",
-        "images/works/Flowers from my Garden - Oil/03.jpg"
-      ]
-    },
-    {
-      "id": 9,
-      "placeholder": false,
-      "title": "Penny's Basque Figs",
-      "medium": "Oil on Canvas",
-      "dimensions": "54 × 64 cm",
-      "year": "2026",
-      "price": 1300,
-      "status": "Available",
-      "description": "I have the most wonderful friends! I first met Penny, an interior designer, when we lived in the village of Ogbourne St George, Berkshire. Last year, I visited her in the Basque region, where she lives in a stunning farmhouse surrounded by a hedge of fig trees.",
-      "slug": "pennys-basque-figs",
-      "plate": "04",
-      "medium_group": "Oil",
-      "images": [
-        "images/works/Penny's Basque Figs - Oil/01.jpg",
-        "images/works/Penny's Basque Figs - Oil/02.jpg",
-        "images/works/Penny's Basque Figs - Oil/03.jpg"
-      ]
-    },
-    {
-      "id": 10,
-      "placeholder": false,
-      "title": "Pony Club's Nasturtiums",
-      "medium": "Oil on Canvas",
-      "dimensions": "33 × 43 cm",
-      "year": "2026",
-      "price": 720,
-      "status": "Available",
-      "description": "Growing wild near the pony club, these cheerful nasturtiums are always a joy to pick as a little posy for my table.",
-      "slug": "pony-clubs-nasturtiums",
-      "plate": "05",
-      "medium_group": "Oil",
-      "images": [
-        "images/works/Pony Club's Nasturtiums - Oil/01.jpg",
-        "images/works/Pony Club's Nasturtiums - Oil/02.jpg",
-        "images/works/Pony Club's Nasturtiums - Oil/03.jpg"
       ]
     },
     {
